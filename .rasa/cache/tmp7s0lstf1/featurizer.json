@@ -1,0 +1,64 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "affirm": 0,
+        "ask_attendance": 1,
+        "ask_leave": 2,
+        "ask_salary": 3,
+        "back": 4,
+        "deny": 5,
+        "goodbye": 6,
+        "greet": 7,
+        "nlu_fallback": 8,
+        "out_of_scope": 9,
+        "policy_question": 10,
+        "request_regularize": 11,
+        "restart": 12,
+        "session_start": 13,
+        "thankyou": 14
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_validate_regularize": 13,
+        "action_query_handbook": 14,
+        "utter_greet": 15,
+        "utter_goodbye": 16,
+        "utter_thankyou": 17,
+        "utter_feedback_prompt": 18,
+        "utter_feedback_thanks": 19,
+        "utter_feedback_ack": 20,
+        "utter_out_of_scope": 21
+      },
+      "entities": {
+        "employee_id": 0,
+        "issue_type": 1
+      },
+      "slots": {
+        "employee_id_0": 0,
+        "issue_type_0": 1,
+        "regularize_count_0": 2,
+        "regularize_count_1": 3,
+        "feedback_0": 4
+      },
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

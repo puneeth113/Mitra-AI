@@ -1,0 +1,14 @@
+{
+  "0": "affirm",
+  "1": "ask_attendance",
+  "2": "ask_leave",
+  "3": "ask_salary",
+  "4": "deny",
+  "5": "employee_id_provided",
+  "6": "goodbye",
+  "7": "greet",
+  "8": "out_of_scope",
+  "9": "policy_question",
+  "10": "request_regularize",
+  "11": "thankyou"
+}
