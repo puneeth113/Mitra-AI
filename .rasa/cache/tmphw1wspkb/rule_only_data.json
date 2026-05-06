@@ -1,7 +1,0 @@
-{
-  "rule_only_slots": [
-    "issue_flag",
-    "issue_type"
-  ],
-  "rule_only_loops": []
-}
