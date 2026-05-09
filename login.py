@@ -28,21 +28,17 @@ def hash_password(password):
 def validate_erp(erp_code):
     """Validate ERP code format: 11 digits + _OIS"""
     import re
-    pattern = r'^\d{11}_OIS$'
+
+    pattern = r"^\d{11}_OIS$"
     if re.match(pattern, erp_code):
         return True, None
+
     return False, "❌ Invalid ERP format. Expected: 11 digits + _OIS (e.g., 20262002367_OIS)"
 
 
 def login_page():
     """Main login page with Employee/Admin toggle"""
-    st.set_page_config(
-        page_title="Mitra HR - Login",
-        page_icon="🔐",
-        layout="centered",
-        initial_sidebar_state="collapsed"
-    )
-    
+
     # Custom CSS for professional look
     st.markdown("""
         <style>
@@ -121,9 +117,9 @@ def login_page():
             }
         </style>
     """, unsafe_allow_html=True)
-    
+
     col1, col2, col3 = st.columns([1, 2, 1])
-    
+
     with col2:
         st.markdown("""
             <div class="login-container">
@@ -133,29 +129,36 @@ def login_page():
                 </div>
             </div>
         """, unsafe_allow_html=True)
-    
+
     # Initialize session state
     if "login_type" not in st.session_state:
         st.session_state.login_type = "employee"
-    
+
     # Toggle between Employee and Admin
     col1, col2 = st.columns(2)
+
     with col1:
-        if st.button("👤 Employee Login", use_container_width=True, 
-                    key="emp_toggle",
-                    type="primary" if st.session_state.login_type == "employee" else "secondary"):
+        if st.button(
+            "👤 Employee Login",
+            use_container_width=True,
+            key="emp_toggle",
+            type="primary" if st.session_state.login_type == "employee" else "secondary",
+        ):
             st.session_state.login_type = "employee"
             st.rerun()
-    
+
     with col2:
-        if st.button("⚙️ Admin Login", use_container_width=True,
-                    key="admin_toggle",
-                    type="primary" if st.session_state.login_type == "admin" else "secondary"):
+        if st.button(
+            "⚙️ Admin Login",
+            use_container_width=True,
+            key="admin_toggle",
+            type="primary" if st.session_state.login_type == "admin" else "secondary",
+        ):
             st.session_state.login_type = "admin"
             st.rerun()
-    
+
     st.divider()
-    
+
     if st.session_state.login_type == "employee":
         _employee_login()
     else:
@@ -170,35 +173,36 @@ def _employee_login():
             Enter your ERP Code to access the HR Helpdesk and Grievance Portal.
         </div>
     """, unsafe_allow_html=True)
-    
+
     with st.form("employee_login_form", clear_on_submit=True):
         erp_code = st.text_input(
             "ERP Code",
             placeholder="e.g., 20262002367_OIS",
-            help="11 digits followed by _OIS"
+            help="11 digits followed by _OIS",
         )
-        
+
         submitted = st.form_submit_button("Login", use_container_width=True, type="primary")
-        
+
         if submitted:
             if not erp_code.strip():
                 st.error("❌ Please enter your ERP Code")
                 return
-            
+
             ok, error = validate_erp(erp_code.strip())
-            
+
             if not ok:
                 st.error(error)
                 return
-            
+
             # Employee login successful
             st.session_state.authenticated = True
             st.session_state.user_type = "employee"
             st.session_state.user_erp = erp_code.strip()
             st.session_state.login_time = datetime.now()
-            
+            st.session_state.active_page = "💬 HR Helpdesk"
+
             st.success("✅ Login successful! Redirecting...")
-            st.session_state.page = "home"
+            st.rerun()
 
 
 def _admin_login():
@@ -209,44 +213,45 @@ def _admin_login():
             Enter your credentials to access admin dashboard and grievance management.
         </div>
     """, unsafe_allow_html=True)
-    
+
     with st.form("admin_login_form", clear_on_submit=True):
         erp_code = st.text_input(
             "ERP Code (Admin ID)",
             placeholder="e.g., 20262002367_OIS",
-            help="Admin ERP Code"
+            help="Admin ERP Code",
         )
-        
+
         password = st.text_input(
             "Password",
             type="password",
-            placeholder="Enter admin password"
+            placeholder="Enter admin password",
         )
-        
+
         submitted = st.form_submit_button("Login", use_container_width=True, type="primary")
-        
+
         if submitted:
             if not erp_code.strip() or not password.strip():
                 st.error("❌ Please enter both ERP Code and Password")
                 return
-            
+
             erp_code = erp_code.strip()
-            
+
             # Validate ERP format
             ok, error = validate_erp(erp_code)
             if not ok:
                 st.error(error)
                 return
-            
+
             # Check admin credentials
             if erp_code in ADMIN_CREDENTIALS and ADMIN_CREDENTIALS[erp_code] == password:
                 st.session_state.authenticated = True
                 st.session_state.user_type = "admin"
                 st.session_state.user_erp = erp_code
                 st.session_state.login_time = datetime.now()
-                
+                st.session_state.active_page = "🛡️ Admin"
+
                 st.success("✅ Admin login successful! Redirecting...")
-                st.session_state.page = "admin_dashboard"
+                st.rerun()
             else:
                 st.error("❌ Invalid ERP Code or Password")
                 st.info("ℹ️ Please check your credentials and try again.")
