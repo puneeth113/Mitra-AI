@@ -405,7 +405,7 @@ def _handle_collect_info(value):
 
         user_info["erp"] = value.strip()
         
-        _bot("Please enter your Branch name (e.g., Bengaluru, Mumbai, Hyderabad):")
+        _bot("Please enter your Branch name (e.g., Makali, Kadugodi, Mysore Road")
         st.session_state.hd_info_step = 2
         return
 
