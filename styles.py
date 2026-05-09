@@ -420,5 +420,175 @@ li[role="option"]:hover {
     background: #2563eb !important;
     color: #ffffff !important;
 }
+
+/* =========================================================
+   SIDEBAR STYLING — MITRA
+========================================================= */
+
+/* Sidebar background */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%) !important;
+    border-right: 1px solid #334155 !important;
+}
+
+/* Sidebar default text */
+section[data-testid="stSidebar"] * {
+    color: #e2e8f0 !important;
+}
+
+/* Logo */
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #38bdf8 !important;
+    margin-bottom: 4px;
+}
+
+/* Subtitle */
+.sidebar-subtitle {
+    font-size: 12px;
+    color: #94a3b8 !important;
+    margin-bottom: 18px;
+}
+
+/* Section title */
+.sidebar-section-title {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #64748b !important;
+    margin: 18px 0 10px 0;
+}
+
+/* User card */
+.sidebar-user-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(30, 58, 138, 0.35);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 14px 0 18px 0;
+}
+
+.sidebar-user-card p {
+    margin: 0;
+    font-size: 12px;
+    color: #bfdbfe !important;
+}
+
+/* Divider */
+.sidebar-divider {
+    margin: 18px 0 12px 0;
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* Contact card */
+.sidebar-contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-top: 10px;
+}
+
+.sidebar-contact-card p {
+    margin: 0;
+    font-size: 12px;
+    color: #cbd5e1 !important;
+}
+
+/* Footer */
+.sidebar-footer {
+    font-size: 11px;
+    color: #64748b !important;
+    text-align: center;
+    margin-top: 18px;
+}
+
+/* =========================================================
+   SIDEBAR BUTTONS — BLACK TEXT
+========================================================= */
+
+/* Button wrapper */
+section[data-testid="stSidebar"] div[data-testid="stButton"] {
+    margin-bottom: 8px !important;
+}
+
+/* Normal sidebar buttons */
+section[data-testid="stSidebar"] div[data-testid="stButton"] button {
+    width: 100% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+
+    background: #ffffff !important;
+    color: #0f172a !important;
+
+    border: 1px solid rgba(148, 163, 184, 0.35) !important;
+    border-radius: 12px !important;
+
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+
+    transition: all 0.18s ease !important;
+    box-shadow: none !important;
+}
+
+/* Force button text black */
+section[data-testid="stSidebar"] div[data-testid="stButton"] button *,
+section[data-testid="stSidebar"] button,
+section[data-testid="stSidebar"] button * {
+    color: #0f172a !important;
+}
+
+/* Hover effect */
+section[data-testid="stSidebar"] div[data-testid="stButton"] button:hover {
+    background: #eff6ff !important;
+    color: #0f172a !important;
+    border-color: #2563eb !important;
+    transform: translateX(3px) !important;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.18) !important;
+}
+
+/* Click effect */
+section[data-testid="stSidebar"] div[data-testid="stButton"] button:active {
+    transform: scale(0.98) !important;
+}
+
+/* Active selected navigation button */
+.active-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+    background: #ffffff !important;
+    border: 2px solid #2563eb !important;
+    border-radius: 12px;
+
+    padding: 12px 14px;
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a !important;
+
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.25);
+}
+
+
     </style>
     """, unsafe_allow_html=True)
