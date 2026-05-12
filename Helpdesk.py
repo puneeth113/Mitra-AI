@@ -9,7 +9,7 @@ import re
 from Grievance_db import get_db
 
 
-HR_EMAIL = "payroll@company.com"
+HR_EMAIL = "payroll2.branch@orchids.edu.in"
 
 # Shift templates for quick selection
 SHIFT_TEMPLATES = {
